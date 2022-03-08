@@ -1,3 +1,8 @@
+# for Hax.co.id US-1 VPS can only access raw.githubusercontents.com
+```
+bash <(curl -fsSL https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
+```
+
 **English** | [中文](https://p3terx.com/archives/cloudflare-warp-configuration-script.html)
 
 # Cloudflare WARP configuration script
