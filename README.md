@@ -3,6 +3,8 @@
 bash <(curl -fsSL https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
 ```
 
+# 请用你的star 让我知道有多少人觉得这个repo有用 :)
+
 **English** | [中文](https://p3terx.com/archives/cloudflare-warp-configuration-script.html)
 
 # Cloudflare WARP configuration script
