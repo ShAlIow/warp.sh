@@ -1342,7 +1342,7 @@ Print_Usage() {
 Cloudflare WARP configuration script
 
 USAGE:
-    bash <(curl -fsSL https://raw.githubusercontents.com/P3TERX/warp.sh/main/warp.sh) [SUBCOMMAND]
+    bash <(curl -fsSL https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
 
 SUBCOMMANDS:
     install         Install Cloudflare WARP Official Linux Client
