@@ -3,9 +3,10 @@
 bash <(curl -fsSL https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
 ```
 
-# 请用你的star 让我知道有多少人觉得这个repo有用 :)
+# 对比原版修改说明
+把脚本中所有 git.io 和 raw.githubusercontent.com 都改成 raw.githubusercontents.com 的形式
 
-
+# 请用你的star 让我知道有多少人觉得这个repo有用 :
 
 **English** | [中文](https://p3terx.com/archives/cloudflare-warp-configuration-script.html)
 
