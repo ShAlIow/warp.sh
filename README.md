@@ -1,4 +1,15 @@
 # for Hax.co.id US-1 VPS can only access raw.githubusercontents.com
+[添加支持 NAT64 的 DNS 服务器即可](https://github.com/P3TERX/warp.sh/issues/7)
+```
+sed -i "s@^\(nameserver.*\)@#\1@" /etc/resolv.conf
+
+tee -a /etc/resolv.conf << NAT64
+nameserver 2001:67c:2b0::4
+nameserver 2001:67c:2b0::6
+NAT64
+```
+---
+以下不用看了。
 ```
 bash <(curl -fsSL https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
 ```
@@ -6,7 +17,6 @@ bash <(curl -fsSL https://raw.githubusercontents.com/crazypeace/warp.sh/main/war
 # 对比原版修改说明
 把脚本中所有 git.io 和 raw.githubusercontent.com 都改成 raw.githubusercontents.com 的形式
 
-# 请用你的star 让我知道有多少人觉得这个repo有用 :
 
 **English** | [中文](https://p3terx.com/archives/cloudflare-warp-configuration-script.html)
 
