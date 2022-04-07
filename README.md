@@ -8,6 +8,11 @@ nameserver 2001:67c:2b0::4
 nameserver 2001:67c:2b0::6
 NAT64
 ```
+然后使用原版脚本安装
+```
+bash <(curl -fsSL git.io/warp.sh) [SUBCOMMAND]
+```
+
 ---
 以下不用看了。
 ```
