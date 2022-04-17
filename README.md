@@ -1,4 +1,4 @@
-# for IPv6 only VPS can not access github.com or api.github.com
+# for IPv6 only VPS can not access github.com, api.github.com, git.io
 ```
 bash <(curl -fsSL https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
 ```
