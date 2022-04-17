@@ -72,10 +72,10 @@ echo -e "${INFO} Architecture: ${OS_ARCH} ${PKGT}"
 
 echo -e "${INFO} Get ${PROJECT_NAME} *FIXED* download URL without api.github.com *NOT* latest."
 
-DOWNLOAD_URL_LIST="https://raw.githubusercontent.com/crazypeace/warp.sh/main/wireguard-go-linux-386.tar.gz\n\
-https://raw.githubusercontent.com/crazypeace/warp.sh/main/wireguard-go-linux-amd64.tar.gz\n\
-https://raw.githubusercontent.com/crazypeace/warp.sh/main/wireguard-go-linux-arm.tar.gz\n\
-https://raw.githubusercontent.com/crazypeace/warp.sh/main/wireguard-go-linux-arm64.tar.gz\n"
+DOWNLOAD_URL_LIST="https://raw.githubusercontents.com/crazypeace/warp.sh/main/wireguard-go-linux-386.tar.gz\n\
+https://raw.githubusercontents.com/crazypeace/warp.sh/main/wireguard-go-linux-amd64.tar.gz\n\
+https://raw.githubusercontents.com/crazypeace/warp.sh/main/wireguard-go-linux-arm.tar.gz\n\
+https://raw.githubusercontents.com/crazypeace/warp.sh/main/wireguard-go-linux-arm64.tar.gz"
 
 echo -e ${DOWNLOAD_URL_LIST}
 

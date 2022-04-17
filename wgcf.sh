@@ -72,10 +72,10 @@ echo -e "${INFO} Architecture: ${OS_ARCH} ${PKGT}"
 
 echo -e "${INFO} Get ${PROJECT_NAME} *FIXED* download URL without api.github.com *NOT* latest"
 
-DOWNLOAD_URL_LIST="https://raw.githubusercontent.com/crazypeace/warp.sh/main/wgcf_2.2.12_linux_386\n\
-https://raw.githubusercontent.com/crazypeace/warp.sh/main/wgcf_2.2.12_linux_amd64\n\
-https://raw.githubusercontent.com/crazypeace/warp.sh/main/wgcf_2.2.12_linux_arm64\n\
-https://raw.githubusercontent.com/crazypeace/warp.sh/main/wgcf_2.2.12_linux_armv7\n"
+DOWNLOAD_URL_LIST="https://raw.githubusercontents.com/crazypeace/warp.sh/main/wgcf_2.2.12_linux_386\n\
+https://raw.githubusercontents.com/crazypeace/warp.sh/main/wgcf_2.2.12_linux_amd64\n\
+https://raw.githubusercontents.com/crazypeace/warp.sh/main/wgcf_2.2.12_linux_arm64\n\
+https://raw.githubusercontents.com/crazypeace/warp.sh/main/wgcf_2.2.12_linux_armv7"
 
 echo -e ${DOWNLOAD_URL_LIST}
 
