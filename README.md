@@ -1,27 +1,18 @@
-# for Hax.co.id US-1 VPS can only access raw.githubusercontents.com
-[添加支持 NAT64 的 DNS 服务器即可](https://github.com/P3TERX/warp.sh/issues/7)
-```
-sed -i "s@^\(nameserver.*\)@#\1@" /etc/resolv.conf
-
-tee -a /etc/resolv.conf << NAT64
-nameserver 2001:67c:2b0::4
-nameserver 2001:67c:2b0::6
-NAT64
-```
-然后使用原版脚本安装
-```
-bash <(curl -fsSL git.io/warp.sh) [SUBCOMMAND]
-```
-
----
-以下不用看了。
+# for IPv6 only VPS can not access github.com or api.github.com
 ```
 bash <(curl -fsSL https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
+```
+For example, setup IPv4 outbound on IPv6 only VPS
+```
+bash <(curl -fsSL https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) 4
 ```
 
 # 对比原版修改说明
 把脚本中所有 git.io 和 raw.githubusercontent.com 都改成 raw.githubusercontents.com 的形式
 
+修改脚本用到的 wgcf.sh 和 wireguard-go.sh 并上传至本 repo
+
+其中访问 api.github.com 获得链接的部分改为写死的，并将 wireguard-go 发布包上传至本 repo
 
 **English** | [中文](https://p3terx.com/archives/cloudflare-warp-configuration-script.html)
 
