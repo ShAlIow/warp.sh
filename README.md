@@ -8,11 +8,11 @@ bash <(curl -fsSL https://raw.githubusercontents.com/crazypeace/warp.sh/main/war
 ```
 
 # 对比原版修改说明
-把脚本中所有 git.io 和 raw.githubusercontent.com 都改成 raw.githubusercontents.com 的形式
+- 把脚本中所有 git.io 和 raw.githubusercontent.com 都改成 raw.githubusercontents.com 的形式
 
-修改脚本用到的 wgcf.sh 和 wireguard-go.sh 并上传至本 repo
+- 修改脚本用到的 wgcf.sh 和 wireguard-go.sh 并上传至本 repo
 
-其中访问 api.github.com 获得链接的部分改为写死的，并将 wireguard-go 和 wgcf 发布包上传至本 repo
+- 其中访问 api.github.com 获得链接的部分改为写死的，并将 wireguard-go 和 wgcf 发布包上传至本 repo
 
 ## 用你的STAR告诉我这个Repo对你有用 Welcome STARs! :)
 
