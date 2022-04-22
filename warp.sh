@@ -1188,6 +1188,9 @@ cat <<-'EOM'
                                                                     
 Copyright (C) P3TERX.COM | https://github.com/P3TERX/warp.sh
 
+Modified: ${FontColor_Green}https://github.com/crazypeace/warp.sh${FontColor_Suffix}
+Welcome any feedback on Github or Telegram: ${FontColor_Green}https://t.me/+D8aqonnCR3s1NTRl{FontColor_Suffix}
+
 EOM
 
 if [ $# -ge 1 ]; then
