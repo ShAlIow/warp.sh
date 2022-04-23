@@ -1,10 +1,10 @@
 # for IPv6 only VPS which can not access github.com, api.github.com, git.io
 ```
-bash <(curl -fsSL https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
+bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
 ```
 For example, setup IPv4 outbound on IPv6 only VPS
 ```
-bash <(curl -fsSL https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) 4
+bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) 4
 ```
 Sometimes, when you access some domain, your vps try to get through IPv6 but failed or jammed.
 Please try to switch to 'prefer IPv4'
