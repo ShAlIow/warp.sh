@@ -12,7 +12,10 @@ Please try to switch to 'prefer IPv4'
 sed -i '/^precedence \:\:ffff\:0\:0/d;/^label 2002\:\:\/16/d' /etc/gai.conf
 echo "precedence ::ffff:0:0/96  100" >> /etc/gai.conf
 ```
-
+You can also use my script to switch to 'prefer IPv4'
+```
+bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/ipv4v6.sh) 4
+```
 # 对比原版修改说明
 - 把脚本中所有 git.io 和 raw.githubusercontent.com 都改成 raw.githubusercontents.com 的形式
 
