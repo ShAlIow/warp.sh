@@ -36,7 +36,7 @@ fi
 
 # IPv4, IPv6 优先
 [[ -e /etc/gai.conf ]] && sed -i '/^precedence \:\:ffff\:0\:0/d;/^label 2002\:\:\/16/d' /etc/gai.conf
-case "$p" in
+case "$priority" in
   4 )	echo "precedence ::ffff:0:0/96  100" >> /etc/gai.conf;;
   6 )	echo "label 2002::/16   2" >> /etc/gai.conf;;
   * )	;;
