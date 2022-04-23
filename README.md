@@ -6,6 +6,12 @@ For example, setup IPv4 outbound on IPv6 only VPS
 ```
 bash <(curl -fsSL https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) 4
 ```
+Sometimes, when you access some domain, your vps try to get through IPv6 but failed or jammed.
+Please try to switch to 'prefer IPv4'
+```
+sed -i '/^precedence \:\:ffff\:0\:0/d;/^label 2002\:\:\/16/d' /etc/gai.conf
+echo "precedence ::ffff:0:0/96  100" >> /etc/gai.conf
+```
 
 # 对比原版修改说明
 - 把脚本中所有 git.io 和 raw.githubusercontent.com 都改成 raw.githubusercontents.com 的形式
