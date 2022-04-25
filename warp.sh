@@ -1191,7 +1191,7 @@ Copyright (C) P3TERX.COM | https://github.com/P3TERX/warp.sh
 EOM
 
 echo -e "Modified: ${FontColor_Green}https://github.com/crazypeace/warp.sh${FontColor_Suffix}"
-echo -e "Welcome any feedback on Github or Telegram: ${FontColor_Green}https://t.me/+D8aqonnCR3s1NTRl{FontColor_Suffix}"
+echo -e "Welcome any feedback on Github or Telegram: ${FontColor_Green}https://t.me/+D8aqonnCR3s1NTRl${FontColor_Suffix}"
 
 if [ $# -ge 1 ]; then
     Get_System_Info
