@@ -1,3 +1,9 @@
+update on 2022-7-7
+
+git.io 和 raw.githubusercontent.com 可以在IPv6环境下访问了。
+
+You can access git.io and raw.githubusercontent.com in only IPv6 environment.
+
 # for IPv6 only VPS which can not access github.com, api.github.com, git.io
 ```
 bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
