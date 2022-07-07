@@ -60,13 +60,16 @@ bash <(curl -fsSL git.io/warp.sh) [SUBCOMMAND]
 ```
 install         Install Cloudflare WARP Official Linux Client
 uninstall       uninstall Cloudflare WARP Official Linux Client
+restart         Restart Cloudflare WARP Official Linux Client
 proxy           Enable WARP Client Proxy Mode (default SOCKS5 port: 40000)
 unproxy         Disable WARP Client Proxy Mode
-wg4             Configuration WARP IPv4 Network interface (with WireGuard)
-wg6             Configuration WARP IPv6 Network interface (with WireGuard)
-wgd             Configuration WARP Dual Stack Network interface (with WireGuard)
-rewg            Restart WARP WireGuard service
-unwg            Disable WARP WireGuard service
+wg              Install WireGuard and related components
+wg4             Configuration WARP IPv4 Global Network (with WireGuard), all IPv4 outbound data over the WARP network
+wg6             Configuration WARP IPv6 Global Network (with WireGuard), all IPv6 outbound data over the WARP network
+wgd             Configuration WARP Dual Stack Global Network (with WireGuard), all outbound data over the WARP network
+wgx             Configuration WARP Non-Global Network (with WireGuard), set fwmark or interface IP Address to use the WARP network
+rwg             Restart WARP WireGuard service
+dwg             Disable WARP WireGuard service
 status          Prints status information
 version         Prints version information
 help            Prints this message or the help of the given subcommand(s)
