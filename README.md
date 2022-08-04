@@ -1,3 +1,18 @@
+update on 2022-8-4
+
+在Hax/Woiden的VPS上还是有可能会遇到如下报错。需要使用本脚本搭建wgcf模式的WARP
+```
+Failed to connect to api.github.com port 443: Connection timed out
+```
+在Woiden上面用wgcf模式搭了IPv4的WARP之后，就不能通过共享IPv4的SSH端口登录了，需要执行：
+```
+wg-quick down wgcf
+sed -i "7 s/^/PostUp = ip -4 rule add from $(ip route get 1.1.1.1 | grep -oP 'src \K\S+') lookup main\n/" /etc/wireguard/wgcf.conf
+sed -i "8 s/^/PostDown = ip -4 rule delete from $(ip route get 1.1.1.1 | grep -oP 'src \K\S+') lookup main\n/" /etc/wireguard/wgcf.conf
+wg-quick up wgcf
+```
+
+
 update on 2022-7-7
 
 git.io 和 raw.githubusercontent.com 可以在IPv6环境下访问了。
