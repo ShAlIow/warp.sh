@@ -8,7 +8,11 @@ Failed to connect to api.github.com port 443: Connection timed out
 ```
 bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/wgcf_postup_postdown.sh)
 ```
-
+综合成一行脚本就是
+```
+bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) 4 && bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/wgcf_postup_postdown.sh)
+```
+对，这是一行命令，非常长。
 ---
 update on 2022-7-7
 
