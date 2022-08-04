@@ -6,10 +6,10 @@ Failed to connect to api.github.com port 443: Connection timed out
 ```
 在Woiden上面用wgcf模式搭了IPv4的WARP之后，就不能通过共享IPv4的SSH端口登录了，需要执行：
 ```
-bash <(curl -L https://github.com/crazypeace/warp.sh/raw/main/wgcf_postup_postdown.sh)
+bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/wgcf_postup_postdown.sh)
 ```
 
-
+---
 update on 2022-7-7
 
 git.io 和 raw.githubusercontent.com 可以在IPv6环境下访问了。
