@@ -28,7 +28,8 @@
 # SOFTWARE.
 #
 # ǝɔɐǝԀʎzɐɹƆ 
-# Convert git.io raw.githubusercontent.com to raw.githubusercontents.com
+# add a default gh-proxy https://github.crazypeace.workers.dev/
+# can use yourself gh-proxy
 # Remove api.github.com, convert to fixed file in repo
 # Put wgcf.sh & wireguard-go.sh into repo
 
@@ -45,6 +46,8 @@ FontColor_Yellow_Bold="\033[1;33m"
 FontColor_Purple="\033[35m"
 FontColor_Purple_Bold="\033[1;35m"
 FontColor_Suffix="\033[0m"
+
+ghproxy='https://github.crazypeace.workers.dev/'
 
 log() {
     local LEVEL="$1"
@@ -315,7 +318,7 @@ Print_Delimiter() {
 }
 
 Install_wgcf() {
-    curl -fsSL https://raw.githubusercontents.com/crazypeace/warp.sh/main/wgcf.sh | bash
+    bash <(curl -fsSL ${ghproxy}https://raw.githubusercontent.com/crazypeace/warp.sh/main/wgcf.sh) ghproxy "${ghproxy}"
 }
 
 Uninstall_wgcf() {
@@ -436,11 +439,11 @@ Install_WireGuardTools() {
 Install_WireGuardGo() {
     case ${SysInfo_Virt} in
     openvz | lxc*)
-        curl -fsSL https://raw.githubusercontents.com/crazypeace/warp.sh/main/wireguard-go.sh | bash
+        bash <(curl -fsSL ${ghproxy}https://raw.githubusercontent.com/crazypeace/warp.sh/main/wireguard-go.sh) ghproxy "${ghproxy}"
         ;;
     *)
         if [[ ${SysInfo_Kernel_Ver_major} -lt 5 || ${SysInfo_Kernel_Ver_minor} -lt 6 ]]; then
-            curl -fsSL https://raw.githubusercontents.com/crazypeace/warp.sh/main/wireguard-go.sh | bash
+            bash <(curl -fsSL ${ghproxy}https://raw.githubusercontent.com/crazypeace/warp.sh/main/wireguard-go.sh) ghproxy "${ghproxy}"
         fi
         ;;
     esac
@@ -1156,7 +1159,7 @@ Print_Usage() {
 Cloudflare WARP Installer [${shVersion}]
 
 USAGE:
-    bash <(curl -fsSL https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
+    bash <(curl -fsSL https://raw.githubusercontent.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
 
 SUBCOMMANDS:
     install         Install Cloudflare WARP Official Linux Client
@@ -1195,54 +1198,77 @@ echo -e "Welcome any feedback on Github or Telegram: ${FontColor_Green}https://t
 
 if [ $# -ge 1 ]; then
     Get_System_Info
+    until [ $# -eq 0 ]
+    do
     case ${1} in
     install)
         Install_WARP_Client
+        shift 1
         ;;
     uninstall)
         Uninstall_WARP_Client
+        shift 1
         ;;
     restart)
         Restart_WARP_Client
+        shift 1
         ;;
     proxy | socks5 | s5)
         Enable_WARP_Client_Proxy
+        shift 1
         ;;
     unproxy | unsocks5 | uns5)
         Disconnect_WARP
+        shift 1
         ;;
     wg)
         Install_WireGuard
+        shift 1
         ;;
     wg4 | 4)
         Set_WARP_IPv4
+        shift 1
         ;;
     wg6 | 6)
         Set_WARP_IPv6
+        shift 1
         ;;
     wgd | d)
         Set_WARP_DualStack
+        shift 1
         ;;
     wgx | x)
         Set_WARP_DualStack_nonGlobal
+        shift 1
         ;;
     rwg)
         Restart_WireGuard
+        shift 1
         ;;
     dwg)
         Disable_WireGuard
+        shift 1
         ;;
     status)
         Print_ALL_Status
+        shift 1
         ;;
     help)
         Print_Usage
+        shift 1
         ;;
     version)
         echo "${shVersion}"
+        shift 1
         ;;
     menu)
         Start_Menu
+        shift 1
+        ;;
+    ghproxy)
+        ghproxy=${2}
+        echo "ghproxy=${ghproxy}"
+        shift 2
         ;;
     *)
         log ERROR "Invalid Parameters: $*"
@@ -1250,6 +1276,7 @@ if [ $# -ge 1 ]; then
         exit 1
         ;;
     esac
+    done
 else
     Print_Usage
 fi
