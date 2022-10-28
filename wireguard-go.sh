@@ -30,6 +30,20 @@ BIN_DIR='/usr/local/bin'
 BIN_NAME='wireguard-go'
 BIN_FILE="${BIN_DIR}/${BIN_NAME}"
 
+ghproxy=''
+
+if [ $# -ge 1 ]; then
+    case ${1} in
+        ghproxy)
+            ghproxy=${2}
+        ;;
+        *)
+        "Invalid Parameters: $*"
+            exit 1
+        ;;
+    esac
+fi
+
 if [[ $(uname -s) != Linux ]]; then
     echo -e "${ERROR} This operating system is not supported."
     exit 1
@@ -72,10 +86,10 @@ echo -e "${INFO} Architecture: ${OS_ARCH} ${PKGT}"
 
 echo -e "${INFO} Get ${PROJECT_NAME} *FIXED* download URL without api.github.com *NOT* latest."
 
-DOWNLOAD_URL_LIST="https://raw.githubusercontents.com/crazypeace/warp.sh/main/wireguard-go-linux-386.tar.gz\n\
-https://raw.githubusercontents.com/crazypeace/warp.sh/main/wireguard-go-linux-amd64.tar.gz\n\
-https://raw.githubusercontents.com/crazypeace/warp.sh/main/wireguard-go-linux-arm.tar.gz\n\
-https://raw.githubusercontents.com/crazypeace/warp.sh/main/wireguard-go-linux-arm64.tar.gz"
+DOWNLOAD_URL_LIST="https://raw.githubusercontent.com/crazypeace/warp.sh/main/wireguard-go-linux-386.tar.gz\n\
+https://raw.githubusercontent.com/crazypeace/warp.sh/main/wireguard-go-linux-amd64.tar.gz\n\
+https://raw.githubusercontent.com/crazypeace/warp.sh/main/wireguard-go-linux-arm.tar.gz\n\
+https://raw.githubusercontent.com/crazypeace/warp.sh/main/wireguard-go-linux-arm64.tar.gz"
 
 echo -e ${DOWNLOAD_URL_LIST}
 
@@ -84,7 +98,7 @@ DOWNLOAD_URL=$(echo -e ${DOWNLOAD_URL_LIST} | grep "${FILE_KEYWORD}")
 echo -e "${INFO} Download URL: ${DOWNLOAD_URL}"
 
 echo -e "${INFO} Installing ${PROJECT_NAME} ..."
-curl -LS "${DOWNLOAD_URL}" | tar xzC ${BIN_DIR} ${BIN_NAME}
+curl -LS ${ghproxy}"${DOWNLOAD_URL}" | tar xzC ${BIN_DIR} ${BIN_NAME}
 chmod +x ${BIN_FILE}
 if [[ ! $(echo ${PATH} | grep ${BIN_DIR}) ]]; then
     ln -sf ${BIN_FILE} /usr/bin/${BIN_NAME}
