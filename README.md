@@ -1,9 +1,15 @@
-update on 2022-8-4
+如果能使用 `bash <(curl -fsSL git.io/warp.sh)` 就不需要使用我这个脚本
 ---
-在Hax/Woiden的VPS上还是有可能会遇到如下报错。需要使用本脚本搭建wgcf模式的WARP
+
+在某些Hax/Woiden的VPS上有可能用不了，遇到如下报错。
 ```
 Failed to connect to api.github.com port 443: Connection timed out
 ```
+需要使用本脚本搭建wgcf模式的WARP
+```
+bash <(curl -L https://github.crazypeace.workers.dev/https://raw.githubusercontent.com/crazypeace/warp.sh/main/warp.sh) 4 
+```
+
 在Woiden上面用wgcf模式搭了IPv4的WARP之后，就不能通过共享IPv4的SSH端口登录了，需要执行：
 ```
 wg-quick down wgcf
@@ -14,46 +20,44 @@ wg-quick up wgcf
 
 也可以使用这个
 ```
-bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/wgcf_postup_postdown.sh)
+bash <(curl -L https://raw.githubusercontent.com/crazypeace/warp.sh/main/wgcf_postup_postdown.sh)
 ```
 综合成一行脚本就是
 ```
-bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) 4 && bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/wgcf_postup_postdown.sh)
+bash <(curl -L https://github.crazypeace.workers.dev/https://raw.githubusercontent.com/crazypeace/warp.sh/main/warp.sh) 4 && bash <(curl -L https://github.crazypeace.workers.dev/https://raw.githubusercontent.com/crazypeace/warp.sh/main/wgcf_postup_postdown.sh)
 ```
 对，这是一行命令，非常长。
 
 
-update on 2022-7-7
----
-git.io 和 raw.githubusercontent.com 可以在IPv6环境下访问了。
-
-You can access git.io and raw.githubusercontent.com in only IPv6 environment.
-
-
 # for IPv6 only VPS which can not access github.com, api.github.com, git.io
 ```
-bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
+bash <(curl -L https://github.crazypeace.workers.dev/https://raw.githubusercontent.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
 ```
 For example, setup IPv4 outbound on IPv6 only VPS
 ```
-bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) 4
+bash <(curl -L https://github.crazypeace.workers.dev/https://raw.githubusercontent.com/crazypeace/warp.sh/main/warp.sh) 4
 ```
 Sometimes, when you access some domain, your vps try to get through IPv6 but failed or jammed.
-Please try to switch to 'prefer IPv4'
+Please try to switch to 'IPv4 priority'
 ```
 sed -i '/^precedence \:\:ffff\:0\:0/d;/^label 2002\:\:\/16/d' /etc/gai.conf
 echo "precedence ::ffff:0:0/96  100" >> /etc/gai.conf
 ```
-You can also use my script to switch to 'prefer IPv4'
+You can also use my script to switch to 'IPv4 priority'
 ```
-bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/ipv4v6.sh) 4
+bash <(curl -L https://raw.githubusercontent.com/crazypeace/warp.sh/main/ipv4v6.sh) 4
 ```
+OR
+```
+bash <(curl -L https://github.crazypeace.workers.dev/https://raw.githubusercontent.com/crazypeace/warp.sh/main/ipv4v6.sh) 4
+```
+
+
 # 对比原版修改说明
-- 把脚本中所有 git.io 和 raw.githubusercontent.com 都改成 raw.githubusercontents.com 的形式
-
-- 修改脚本用到的 wgcf.sh 和 wireguard-go.sh 并上传至本 repo
-
-- 其中访问 api.github.com 获得链接的部分改为写死的，并将 wireguard-go 和 wgcf 发布包上传至本 repo
+- 脚本中写了一个默认的 gh-proxy https://github.crazypeace.workers.dev/
+- 可以带参数使用自定义的 gh-proxy
+- 修改脚本用到的 wgcf.sh 和 wireguard-go.sh 使其可以传入 gh-proxy 参数并上传至本 repo 
+- wgcf.sh 和 wireguard-go.sh其中访问 api.github.com 获得链接的部分改为写死的，并将 wireguard-go 和 wgcf 发布包上传至本 repo
 
 ## 用你的STAR告诉我这个Repo对你有用 Welcome STARs! :)
 
