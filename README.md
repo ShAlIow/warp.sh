@@ -28,6 +28,10 @@ bash <(curl -L https://github.crazypeace.workers.dev/https://raw.githubuserconte
 ```
 对，这是一行命令，非常长。
 
+有时，访问某些域名时，你的VPS会使用IPv6而不是IPv4，于是遇到问题。这时你可以设置IPv4优先
+```
+bash <(curl -L https://raw.githubusercontent.com/crazypeace/warp.sh/main/ipv4v6.sh) 4
+```
 
 # for IPv6 only VPS which can not access github.com, api.github.com, git.io
 ```
@@ -47,10 +51,7 @@ You can also use my script to switch to 'IPv4 priority'
 ```
 bash <(curl -L https://raw.githubusercontent.com/crazypeace/warp.sh/main/ipv4v6.sh) 4
 ```
-OR
-```
-bash <(curl -L https://github.crazypeace.workers.dev/https://raw.githubusercontent.com/crazypeace/warp.sh/main/ipv4v6.sh) 4
-```
+
 
 
 # 对比原版修改说明
