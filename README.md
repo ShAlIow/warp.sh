@@ -7,7 +7,7 @@ Failed to connect to api.github.com port 443: Connection timed out
 ```
 需要使用本脚本搭建wgcf模式的WARP
 ```
-bash <(curl -L https://github.crazypeace.workers.dev/https://raw.githubusercontent.com/crazypeace/warp.sh/main/warp.sh) 4 
+bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) 4 
 ```
 
 在Woiden上面用wgcf模式搭了IPv4的WARP之后，就不能通过共享IPv4的SSH端口登录了，需要执行：
@@ -20,26 +20,26 @@ wg-quick up wgcf
 
 也可以使用这个
 ```
-bash <(curl -L https://raw.githubusercontent.com/crazypeace/warp.sh/main/wgcf_postup_postdown.sh)
+bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/wgcf_postup_postdown.sh)
 ```
 综合成一行脚本就是
 ```
-bash <(curl -L https://github.crazypeace.workers.dev/https://raw.githubusercontent.com/crazypeace/warp.sh/main/warp.sh) 4 && bash <(curl -L https://github.crazypeace.workers.dev/https://raw.githubusercontent.com/crazypeace/warp.sh/main/wgcf_postup_postdown.sh)
+bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) 4 && bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/wgcf_postup_postdown.sh)
 ```
 对，这是一行命令，非常长。
 
 有时，访问某些域名时，你的VPS会使用IPv6而不是IPv4，于是遇到问题。这时你可以设置IPv4优先
 ```
-bash <(curl -L https://raw.githubusercontent.com/crazypeace/warp.sh/main/ipv4v6.sh) 4
+bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/ipv4v6.sh) 4
 ```
 
 # for IPv6 only VPS which can not access github.com, api.github.com, git.io
 ```
-bash <(curl -L https://github.crazypeace.workers.dev/https://raw.githubusercontent.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
+bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
 ```
 For example, setup IPv4 outbound on IPv6 only VPS
 ```
-bash <(curl -L https://github.crazypeace.workers.dev/https://raw.githubusercontent.com/crazypeace/warp.sh/main/warp.sh) 4
+bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) 4
 ```
 Sometimes, when you access some domain, your vps try to get through IPv6 but failed or jammed.
 Please try to switch to 'IPv4 priority'
@@ -49,7 +49,7 @@ echo "precedence ::ffff:0:0/96  100" >> /etc/gai.conf
 ```
 You can also use my script to switch to 'IPv4 priority'
 ```
-bash <(curl -L https://raw.githubusercontent.com/crazypeace/warp.sh/main/ipv4v6.sh) 4
+bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/ipv4v6.sh) 4
 ```
 
 
