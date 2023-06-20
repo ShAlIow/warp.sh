@@ -1,14 +1,21 @@
 如果能使用 `bash <(curl -fsSL git.io/warp.sh)` 就不需要使用我这个脚本
 ---
 
-在某些Hax/Woiden的VPS上有可能用不了，遇到如下报错。
+在某些IPV6的VPS上(包括但不限于Hax/Woiden)有可能用不了，遇到如下报错。
 ```
 Failed to connect to api.github.com port 443: Connection timed out
 ```
 需要使用本脚本搭建wgcf模式的WARP
 ```
-bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) 4 
+bash <(curl -L https://raw.githubusercontent.com/crazypeace/warp.sh/main/warp.sh) 4 
 ```
+这个命令本身也是一个github脚本, 如果执行报错. 那么可以带上github proxy去访问github资源. 如下:
+```
+bash <(curl -L https://ghproxy.crazypeace.workers.dev/https://raw.githubusercontent.com/crazypeace/warp.sh/main/warp.sh) 4
+```
+对, 这行命令就是这么长, 这么奇怪, 你全部复制一次粘贴执行就好.
+
+---
 
 在Woiden上面用wgcf模式搭了IPv4的WARP之后，就不能通过共享IPv4的SSH端口登录了，需要执行：
 ```
@@ -17,29 +24,27 @@ sed -i "7 s/^/PostUp = ip -4 rule add from $(ip route get 1.1.1.1 | grep -oP 'sr
 sed -i "8 s/^/PostDown = ip -4 rule delete from $(ip route get 1.1.1.1 | grep -oP 'src \K\S+') lookup main\n/" /etc/wireguard/wgcf.conf
 wg-quick up wgcf
 ```
+也可以使用这个综合在一起了的脚本
+```
+bash <(curl -L https://raw.githubusercontent.com/crazypeace/warp.sh/main/wgcf_postup_postdown.sh)
+```
 
-也可以使用这个
-```
-bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/wgcf_postup_postdown.sh)
-```
-综合成一行脚本就是
-```
-bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) 4 && bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/wgcf_postup_postdown.sh)
-```
-对，这是一行命令，非常长。
+---
 
 有时，访问某些域名时，你的VPS会使用IPv6而不是IPv4，于是遇到问题。这时你可以设置IPv4优先
 ```
-bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/ipv4v6.sh) 4
+bash <(curl -L https://raw.githubusercontent.com/crazypeace/warp.sh/main/ipv4v6.sh) 4
 ```
 
 # for IPv6 only VPS which can not access github.com, api.github.com, git.io
 ```
-bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
+bash <(curl -L https://ghproxy.crazypeace.workers.dev/https://raw.githubusercontent.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
 ```
+Don't worry, the `https://ghproxy.crazypeace.workers.dev/` is a github proxy.
+
 For example, setup IPv4 outbound on IPv6 only VPS
 ```
-bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) 4
+bash <(curl -L https://ghproxy.crazypeace.workers.dev/https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) 4
 ```
 Sometimes, when you access some domain, your vps try to get through IPv6 but failed or jammed.
 Please try to switch to 'IPv4 priority'
@@ -49,7 +54,7 @@ echo "precedence ::ffff:0:0/96  100" >> /etc/gai.conf
 ```
 You can also use my script to switch to 'IPv4 priority'
 ```
-bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/ipv4v6.sh) 4
+bash <(curl -L https://raw.githubusercontent.com/crazypeace/warp.sh/main/ipv4v6.sh) 4
 ```
 
 
