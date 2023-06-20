@@ -66,6 +66,7 @@ bash <(curl -L https://raw.githubusercontent.com/crazypeace/warp.sh/main/ipv4v6.
 - wgcf.sh 和 wireguard-go.sh其中访问 api.github.com 获得链接的部分改为写死的，并将 wireguard-go 和 wgcf 发布包上传至本 repo
 
 ## 用你的STAR告诉我这个Repo对你有用 Welcome STARs! :)
+[![Stargazers over time](https://starchart.cc/crazypeace/warp.sh.svg)](https://starchart.cc/crazypeace/warp.sh)
 
 ---
 
