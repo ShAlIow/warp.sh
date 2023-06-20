@@ -44,7 +44,7 @@ Don't worry, the `https://ghproxy.crazypeace.workers.dev/` is a github proxy.
 
 For example, setup IPv4 outbound on IPv6 only VPS
 ```
-bash <(curl -L https://ghproxy.crazypeace.workers.dev/https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) 4
+bash <(curl -L https://ghproxy.crazypeace.workers.dev/https://raw.githubusercontent.com/crazypeace/warp.sh/main/warp.sh) 4
 ```
 Sometimes, when you access some domain, your vps try to get through IPv6 but failed or jammed.
 Please try to switch to 'IPv4 priority'
@@ -88,7 +88,7 @@ Quickly configure and use Cloudflare WARP on your Linux Server, which works with
 ## Usage
 
 ```bash
-bash <(curl -L https://raw.githubusercontents.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
+bash <(curl -L https://raw.githubusercontent.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
 ```
 
 ### Subcommands
