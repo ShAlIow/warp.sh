@@ -60,7 +60,7 @@ bash <(curl -L https://raw.githubusercontent.com/crazypeace/warp.sh/main/ipv4v6.
 
 
 # 对比原版修改说明
-- 脚本中写了一个默认的 gh-proxy https://github.crazypeace.workers.dev/
+- 脚本中写了一个默认的 gh-proxy https://ghproxy.crazypeace.workers.dev/
 - 可以带参数使用自定义的 gh-proxy
 - 修改脚本用到的 wgcf.sh 和 wireguard-go.sh 使其可以传入 gh-proxy 参数并上传至本 repo 
 - wgcf.sh 和 wireguard-go.sh其中访问 api.github.com 获得链接的部分改为写死的，并将 wireguard-go 和 wgcf 发布包上传至本 repo

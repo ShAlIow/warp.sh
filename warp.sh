@@ -28,7 +28,7 @@
 # SOFTWARE.
 #
 # ǝɔɐǝԀʎzɐɹƆ 
-# add a default gh-proxy https://github.crazypeace.workers.dev/
+# add a default gh-proxy https://ghproxy.crazypeace.workers.dev/
 # can use yourself gh-proxy
 # Remove api.github.com, convert to fixed file in repo
 # Put wgcf.sh & wireguard-go.sh into repo
@@ -47,7 +47,7 @@ FontColor_Purple="\033[35m"
 FontColor_Purple_Bold="\033[1;35m"
 FontColor_Suffix="\033[0m"
 
-ghproxy='https://github.crazypeace.workers.dev/'
+ghproxy='https://ghproxy.crazypeace.workers.dev/'
 
 log() {
     local LEVEL="$1"
