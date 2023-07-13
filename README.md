@@ -72,9 +72,9 @@ bash <(curl -L https://raw.githubusercontent.com/crazypeace/warp.sh/main/ipv4v6.
 
 **English** | [中文](https://p3terx.com/archives/cloudflare-warp-configuration-script.html)
 
-# Cloudflare WARP configuration script
+# Cloudflare WARP Installer
 
-Quickly configure and use Cloudflare WARP on your Linux Server, which works with the latest major Linux distributions.
+A Bash script that automatically installs and configures CloudFlare WARP in Linux, connects to WARP networks with WARP official client or WireGuard.
 
 ## Features
 
@@ -86,10 +86,34 @@ Quickly configure and use Cloudflare WARP on your Linux Server, which works with
 - Configuration WARP Dual Stack Network interface (with WireGuard)
 - ...
 
+## Requirements
+
+*These are the requirements for WireGuard, see the [official page](https://pkg.cloudflareclient.com/packages/cloudflare-warp) for the CloudFlare WARP client requirements.*
+
+Supported distributions:
+
+- Debian >= 10
+- Ubuntu >= 16.04
+- Fedora
+- CentOS
+- Oracle Linux
+- Arch Linux
+- Other similar distributions
+
+Supported platform architecture:
+
+- x86(i386)
+- x86_64(amd64)
+- ARMv8(aarch64)
+- ARMv7(armhf)
+
 ## Usage
 
 ```bash
-bash <(curl -L https://raw.githubusercontent.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
+bash <(curl -fsSL git.io/warp.sh) [SUBCOMMAND]
+# or
+wget git.io/warp.sh
+bash warp.sh [SUBCOMMAND]
 ```
 
 ### Subcommands
@@ -113,6 +137,23 @@ help            Prints this message or the help of the given subcommand(s)
 menu            Chinese special features menu
 ```
 
+### Example
+
+- Install and automatically configure the Proxy Mode feature of the WARP client, enable the local loopback port 40000, and use an application that supports SOCKS5 to connect to this port.
+    ```
+    bash <(curl -fsSL git.io/warp.sh) proxy
+    ```
+
+- Install and automatically configure WARP IPv6 Network (with WireGuard)，Giving your Linux server access to IPv6 networks.
+    ```
+    bash <(curl -fsSL git.io/warp.sh) wg6
+    ```
+
+- This Bash script is also a good WireGuard installer.
+    ```
+    bash <(curl -fsSL git.io/warp.sh) wg
+    ```
+
 ## Credits
 
 - [Cloudflare WARP](https://1.1.1.1/)
@@ -122,3 +163,9 @@ menu            Chinese special features menu
 ## License
 
 [MIT](https://github.com/P3TERX/warp.sh/blob/main/LICENSE) © **[P3TERX](https://p3terx.com/)**
+
+## Notice of Non-Affiliation and Disclaimer
+
+We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with Cloudflare, or any of its subsidiaries or its affiliates. The official Cloudflare website can be found at https://www.cloudflare.com/.
+
+The names Cloudflare Warp and Cloudflare as well as related names, marks, emblems and images are registered trademarks of their respective owners.
