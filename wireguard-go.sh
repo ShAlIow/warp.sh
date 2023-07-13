@@ -30,7 +30,7 @@ BIN_DIR='/usr/local/bin'
 BIN_NAME='wireguard-go'
 BIN_FILE="${BIN_DIR}/${BIN_NAME}"
 
-ghproxy=''
+ghproxy='https://ghproxy.crazypeace.workers.dev/'
 
 if [ $# -ge 1 ]; then
     case ${1} in
@@ -84,17 +84,8 @@ arm*)
 esac
 echo -e "${INFO} Architecture: ${OS_ARCH} ${PKGT}"
 
-echo -e "${INFO} Get ${PROJECT_NAME} *FIXED* download URL without api.github.com *NOT* latest."
-
-DOWNLOAD_URL_LIST="https://raw.githubusercontent.com/crazypeace/warp.sh/main/wireguard-go-linux-386.tar.gz\n\
-https://raw.githubusercontent.com/crazypeace/warp.sh/main/wireguard-go-linux-amd64.tar.gz\n\
-https://raw.githubusercontent.com/crazypeace/warp.sh/main/wireguard-go-linux-arm.tar.gz\n\
-https://raw.githubusercontent.com/crazypeace/warp.sh/main/wireguard-go-linux-arm64.tar.gz"
-
-echo -e ${DOWNLOAD_URL_LIST}
-
-DOWNLOAD_URL=$(echo -e ${DOWNLOAD_URL_LIST} | grep "${FILE_KEYWORD}")
-
+echo -e "${INFO} Get ${PROJECT_NAME} download URL ..."
+DOWNLOAD_URL=$(curl -fsSL ${ghproxy}${GH_API_URL} | grep 'browser_download_url.*gz"' | cut -d'"' -f4 | grep "${FILE_KEYWORD}")
 echo -e "${INFO} Download URL: ${DOWNLOAD_URL}"
 
 echo -e "${INFO} Installing ${PROJECT_NAME} ..."
