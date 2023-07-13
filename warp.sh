@@ -3,7 +3,7 @@
 # https://github.com/P3TERX/warp.sh
 # Description: Cloudflare WARP Installer
 # System Required: Debian, Ubuntu, Fedora, CentOS, Oracle Linux, Arch Linux
-# Version: beta38
+# Version: beta39
 #
 # MIT License
 #
@@ -32,10 +32,10 @@
 # can use yourself gh-proxy
 # Remove api.github.com, convert to fixed file in repo
 # Put wgcf.sh & wireguard-go.sh into repo
+# Add gh-proxy in wgcf.sh & wireguard-go.sh
 
 
-
-shVersion='beta38'
+shVersion='beta39'
 
 FontColor_Red="\033[31m"
 FontColor_Red_Bold="\033[1;31m"
@@ -161,28 +161,25 @@ Install_Requirements_Debian() {
 
 Install_WARP_Client_Debian() {
     if [[ ${SysInfo_OS_Name_lowercase} = ubuntu ]]; then
-        OS_CodeName='focal'
-    elif [[ ${SysInfo_OS_Name_lowercase} = debian ]]; then
-        case ${SysInfo_OS_Ver_major} in
-        11)
-            OS_CodeName='bullseye'
-            ;;
-        10)
-            OS_CodeName='buster'
-            ;;
+        case ${SysInfo_OS_CodeName} in
+        bionic | focal | jammy) ;;
         *)
             log ERROR "This operating system is not supported."
             exit 1
             ;;
         esac
-    elif [[ ${SysInfo_RelatedOS} = *debian* ]]; then
-        OS_CodeName='buster'
-    else
-        OS_CodeName="${SysInfo_OS_CodeName}"
+    elif [[ ${SysInfo_OS_Name_lowercase} = debian ]]; then
+        case ${SysInfo_OS_CodeName} in
+        buster | bullseye) ;;
+        *)
+            log ERROR "This operating system is not supported."
+            exit 1
+            ;;
+        esac
     fi
     Install_Requirements_Debian
     curl https://pkg.cloudflareclient.com/pubkey.gpg | gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
-    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ ${OS_CodeName} main" | tee /etc/apt/sources.list.d/cloudflare-client.list
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ ${SysInfo_OS_CodeName} main" | tee /etc/apt/sources.list.d/cloudflare-client.list
     apt update
     apt install cloudflare-warp -y
 }
@@ -217,9 +214,7 @@ Install_WARP_Client() {
         Install_WARP_Client_CentOS
         ;;
     *)
-        if [[ ${SysInfo_RelatedOS} = *debian* ]]; then
-            Install_WARP_Client_Debian
-        elif [[ ${SysInfo_RelatedOS} = *rhel* || ${SysInfo_RelatedOS} = *fedora* ]]; then
+        if [[ ${SysInfo_RelatedOS} = *rhel* || ${SysInfo_RelatedOS} = *fedora* ]]; then
             Install_WARP_Client_CentOS
         else
             log ERROR "This operating system is not supported."
@@ -318,7 +313,7 @@ Print_Delimiter() {
 }
 
 Install_wgcf() {
-    bash <(curl -fsSL ${ghproxy}https://raw.githubusercontent.com/crazypeace/warp.sh/main/wgcf.sh) ghproxy "${ghproxy}"
+    bash <(curl -fsSL ${ghproxy}https://github.com/crazypeace/warp.sh/raw/main/wgcf.sh) ghproxy "${ghproxy}"
 }
 
 Uninstall_wgcf() {
@@ -439,11 +434,11 @@ Install_WireGuardTools() {
 Install_WireGuardGo() {
     case ${SysInfo_Virt} in
     openvz | lxc*)
-        bash <(curl -fsSL ${ghproxy}https://raw.githubusercontent.com/crazypeace/warp.sh/main/wireguard-go.sh) ghproxy "${ghproxy}"
+        bash <(curl -fsSL ${ghproxy}https://github.com/crazypeace/warp.sh/raw/main/wireguard-go.sh) ghproxy "${ghproxy}"
         ;;
     *)
         if [[ ${SysInfo_Kernel_Ver_major} -lt 5 || ${SysInfo_Kernel_Ver_minor} -lt 6 ]]; then
-            bash <(curl -fsSL ${ghproxy}https://raw.githubusercontent.com/crazypeace/warp.sh/main/wireguard-go.sh) ghproxy "${ghproxy}"
+            bash <(curl -fsSL ${ghproxy}https://github.com/crazypeace/warp.sh/raw/main/wireguard-go.sh) ghproxy "${ghproxy}"
         fi
         ;;
     esac
@@ -1159,7 +1154,7 @@ Print_Usage() {
 Cloudflare WARP Installer [${shVersion}]
 
 USAGE:
-    bash <(curl -fsSL https://raw.githubusercontent.com/crazypeace/warp.sh/main/warp.sh) [SUBCOMMAND]
+    bash <(curl -fsSL https://github.com/crazypeace/warp.sh/raw/main/warp.sh) [SUBCOMMAND]
 
 SUBCOMMANDS:
     install         Install Cloudflare WARP Official Linux Client
