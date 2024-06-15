@@ -70,6 +70,9 @@ bash <(curl -L https://raw.githubusercontent.com/crazypeace/warp.sh/main/ipv4v6.
 
 ---
 
+<details>
+    <summary>原项目readme (点击展开)</summary>
+    
 **English** | [中文](https://p3terx.com/archives/cloudflare-warp-configuration-script.html)
 
 # Cloudflare WARP Installer
@@ -169,3 +172,5 @@ menu            Chinese special features menu
 We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with Cloudflare, or any of its subsidiaries or its affiliates. The official Cloudflare website can be found at https://www.cloudflare.com/.
 
 The names Cloudflare Warp and Cloudflare as well as related names, marks, emblems and images are registered trademarks of their respective owners.
+
+</details>
